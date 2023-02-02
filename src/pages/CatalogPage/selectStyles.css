@@ -1,0 +1,30 @@
+.custom-select-container {
+	height: 40px !important;
+	width: 220px !important;
+	border: 1px solid black !important;
+	border-radius: 7px !important;
+}
+
+.custom-select__value-container {
+	
+	border: none !important;
+	border-radius: none !important;
+}
+.custom-select__control {
+	border: none !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	width: 213px !important;
+	margin-left: 2px !important;
+}
+.custom-select__indicator-separator {
+	display: none !important;
+}
+
+.custom-select__indicators {
+	cursor:  pointer !important;
+}
+
+.custom-select__indicator {
+
+}

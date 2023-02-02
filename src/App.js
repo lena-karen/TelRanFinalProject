@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
 
+import MainPage from './pages/MainPage';
+import CategoriesPage from './pages/CategoriesPage';
+import ProductsPage from './pages/ProductsPage';
+import CartPage from './pages/CartPage';
+import Layout from './components/Layout';
+import ProductPage from './pages/ProductPage';
+import CatalogPage from './pages/CatalogPage';
+
+import { Routes, Route } from 'react-router-dom'
+
 function App() {
+
+  // const actionsRef = useRef(null)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Context.Provider value = {{actionsRef}}>
+      <div className="App">
+        <Routes>
+            <Route path = '/' element = {<Layout />}>
+              <Route index element = {<MainPage />} />
+              <Route path = 'products' element = {<CatalogPage />} />
+              <Route path = 'categories' element = {<CategoriesPage />} />
+              <Route path = ':category' element = {<ProductsPage />} />
+              <Route path = ':category/:currentProduct' element = {<ProductPage />} />
+              <Route path = 'cart' element = {<CartPage />} />
+          </Route>
+        </Routes>
+      </div>
+    // </Context.Provider>
+    
   );
 }
 

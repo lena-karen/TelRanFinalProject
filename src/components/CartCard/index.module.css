@@ -1,0 +1,155 @@
+
+.cart_card {
+	margin: 40px 0;
+	display: grid;
+	align-items: center;
+	
+	position: relative;
+	grid-template-columns: [start] 193px [imageend] 29px [titlestart] auto [pricestart] auto [priceend] 1fr [oldpricestart] auto [oldpriceend] 35px;
+	grid-template-rows: auto 48px;
+	padding-bottom: 40px;
+	border-bottom: 1px solid var(--light-gray);
+
+	line-height: 130%;
+	letter-spacing: 0.03em;
+	font-weight: 600;
+}
+
+.product_img {
+	grid-column: start / imageend;
+	grid-row: 1 / span 2;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.product_img img {
+	border-radius: 10px;
+	width: 192px;
+	height: 166px;
+}
+
+.product_title {
+	grid-column: titlestart / pricestart;
+	grid-row: 1;
+	align-self: start;
+	white-space: normal;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.product_price {
+	grid-column: pricestart / priceend;
+	grid-row: 1 / span 2;
+	justify-self: end;
+
+	font-size: 40px;
+	margin: 0 10px;
+}
+
+.product_old_price {
+	grid-column: oldpricestart / oldpriceend;
+	grid-row: 1 / span 2;
+
+	justify-self: end;
+	margin: 0 10px;
+	font-weight: 500;
+	font-size: 20px;
+	text-decoration: line-through;
+}
+
+.delete {
+	position: absolute;
+	right: 0;
+	align-self: start;
+	cursor: pointer;
+}
+
+.form {
+	grid-row: 2;
+	grid-column: titlestart / titleend;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 140px;
+	height: 40px;
+	border: 1px solid black;
+	border-radius: 12px;
+}
+.form img {
+	width: 18px;
+	height: 18px;
+}
+.form div {
+	width: 18px;
+	height: 18px;
+}
+
+.form input {
+	border: none;
+	outline: none;
+	width: 21px;
+
+	height: 18px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 130%;
+
+}
+
+.change_btn {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+@media screen and (max-width: 1160px) {
+	.cart_card {
+		grid-template-columns: [start] 193px [imageend] 29px [titlestart] minmax(300px, 400px) [pricestart] auto [priceend] 1fr [oldpricestart] auto [oldpriceend] 35px;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.cart_card {
+		grid-template-columns: [start] 193px [imageend] 29px [titlestart] minmax(250px, 200px) [pricestart] auto [priceend] 1fr [oldpricestart] auto [oldpriceend] 35px;
+	}
+}
+
+@media screen and (max-width: 760px) {
+	.cart_card {
+		grid-template-columns: [start] 193px [imageend] 29px [titlestart] 1fr [pricestart] auto [priceend] 1fr [oldpriceend] 35px;
+	}
+
+	.product_title {
+		grid-column: titlestart / oldpriceend;
+	}
+
+	.product_price {
+		grid-column: titlestart / priceend;
+		justify-self: start;
+	}
+
+	.product_old_price {
+		grid-column: priceend / oldpriceend;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.cart_card {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.product_title {
+		text-align: center;
+	}
+
+
+}

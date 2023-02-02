@@ -1,0 +1,51 @@
+.nav {
+	display: flex;
+	align-items: center;
+	gap: 57px;
+}
+
+.nav a {
+	color: black;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 130%;
+}
+
+.nav a:hover {
+	color: var(--green);
+}
+
+.nav a:hover svg {
+	fill: var(--green);
+}
+
+@media screen and (max-width: 900px) {
+	.nav {
+		gap: 35px;
+	}
+}
+
+@media screen and (max-width: 740px) {
+	.nav {
+		gap: 20px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.nav {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		padding-left: 40px;
+	}
+
+	.nav a {
+		font-size: 34px;
+	}
+
+	.quantity_in_cart {
+		font-size: 16px;
+		top: 40%;
+	}
+
+}

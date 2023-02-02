@@ -1,0 +1,17 @@
+.actions {
+	margin-top: 50px;
+	margin-bottom: 170px;
+}
+
+.products_block {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 318px);
+	gap: 35px;
+	margin-top: 21px;
+}
+
+@media screen and (max-width: 690px) {
+	.products_block {
+		justify-content: center;
+	}
+}

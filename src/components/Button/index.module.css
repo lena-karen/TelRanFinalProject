@@ -1,0 +1,25 @@
+.button {
+	cursor: pointer;
+}
+
+.white {
+	background: white;
+	border: 2px solid white;
+	color: var(--black);
+}
+.green {
+	background: var(--green);
+	border: 2px solid var(--green);
+	color: white;
+}
+.transparent {
+	background: transparent;
+	border: 2px solid white;
+	color: white;
+}
+
+.hover {
+	background-color: var(--light-green);
+	border: 1px solid var(--green);
+	color: var(--green);
+}
