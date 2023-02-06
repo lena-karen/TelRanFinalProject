@@ -59,6 +59,7 @@
 	height: 42px !important;
 	border-radius: 7px !important;
 	border: 1px solid var(--dark-gray) !important;
+	
 }
 
 .sale_checkbox:checked {

@@ -38,11 +38,22 @@ export default function ProductCard({product}) {
         </Button>
       </div>
 
-      <Link to = {`/${category}/${id}`}>
+      <Link to = {`/${category}/${id}`} tabIndex = '-1'>
         <div className = {styles.price_block}>
-          <p>{discont_price}<span>$</span></p>
+          {
+            discont_price != price
+            ? <p>{discont_price}<span>$</span></p>
+            : ''
+          }
+          
           <p>{price}$</p>
-          <p>{discount}%</p>
+
+          {
+            discount != 0
+            ? <p>{discount}%</p>
+            : ''
+          }
+          
         </div>
         <p className = {styles.product_title}>{title}</p>
       </Link>

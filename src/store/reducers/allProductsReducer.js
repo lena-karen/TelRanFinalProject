@@ -8,6 +8,15 @@ import
 
 const initialState = []
 let defaultState = []
+const sort = (payload, state) => {
+	if (payload === 'default') {
+		return defaultState
+	} else if (typeof state[0][payload] === 'string') {
+		return [...state].sort((a, b) => a[payload].localeCompare(b[payload]))
+	} else {
+		return [...state].sort((a, b) => a[payload] - b[payload])
+	}
+}
 
 export const allProductsReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -16,14 +25,14 @@ export const allProductsReducer = (state = initialState, action) => {
 			return action.payload
 			
 		case SORT_ALL_PRODUCTS:
-
-			if (action.payload === 'default') {
-				return defaultState
-			} else if (typeof state[0][action.payload] === 'string') {
-				return [...state].sort((a, b) => a[action.payload].localeCompare(b[action.payload]))
-			} else {
-				return [...state].sort((a, b) => a[action.payload] - b[action.payload])
-			}
+			return sort(action.payload, state)
+			// if (action.payload === 'default') {
+			// 	return defaultState
+			// } else if (typeof state[0][action.payload] === 'string') {
+			// 	return [...state].sort((a, b) => a[action.payload].localeCompare(b[action.payload]))
+			// } else {
+			// 	return [...state].sort((a, b) => a[action.payload] - b[action.payload])
+			// }
 
 		case SEARCH_ALL_PRICE:
 			const {minValue, maxValue} = action.payload
@@ -38,7 +47,11 @@ export const allProductsReducer = (state = initialState, action) => {
 			})
 
 		case ON_SALE_ALL_PRODUCTS:
-			return state.filter(el => el.discont_price > 0)
+			if (action.payload.onSale) {
+				return state.filter(el => el.discont_price == el.price)
+			} else {
+				return sort(action.payload.sortType, defaultState)
+			}
 	
 		default:
 			return state;

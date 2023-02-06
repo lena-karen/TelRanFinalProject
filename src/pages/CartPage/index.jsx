@@ -1,26 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import styles from './index.module.css'
 import cn from 'classnames'
 
-import exampleIcon from './example.svg'
 import ArrowIcon from './ArrowIcon'
-import CloseIcon from './CloseIcon'
-import MinusIcon from './MinusIcon'
-import PlusIcon from './PlusIcon'
 import Title from '../../components/Title'
-import Input from '../../components/Input'
 import Form from '../../components/Form'
 import CartCard from '../../components/CartCard'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { addToCartAction } from '../../store/actions/addToCartAction'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 
 
 export default function CartPage() {
-
-  //const [items, setItems] = useState([])
 
   const productsInCart = useSelector(state => state.cart)
 
@@ -58,10 +50,16 @@ export default function CartPage() {
                 <p>Total</p>
                 <p>{total}$</p>
               </div>
-              <div>
-                <p>Total with discont</p>
-                <p>{total_discont}$</p>
-              </div>
+
+              {
+                total_discont != 0
+                ?               
+                <div>
+                  <p>Total with discont</p>
+                  <p>{total_discont}$</p>
+                </div>
+                : ''
+              }
 
               <div>
                 <p>You save</p>

@@ -17,41 +17,58 @@ import { onSaleProductsAction } from '../../store/actions/onSaleProductsAction';
 
 export default function ProductsPage() {
 
+  const [minValue, setMinValue] = useState(0)
+  const [maxValue, setMaxValue] = useState(Infinity)
+  const [onSale, setOnSale] = useState(false)
+  const [sortType, setSortType] = useState('default')
+
   const {category} = useParams();
 
   const dispatch = useDispatch()
 
-
+ 
   useEffect(() => {
     dispatch(loadProducts(category))
+  
   }, [])
 
    const products = useSelector(state => state.products)
    const categories = useSelector(state => state.categories)
 
    const currentCategory = categories.find(el => el.id == category)
+  
 
-   const sort_products = event => dispatch(sortProductsAction(event.target.value))
+   const sort_products = event => {
+    setSortType(event.target.value)
+    dispatch(sortProductsAction(event.target.value))
+   }
 
    const min = Math.min(...products.map(el => el.discont_price))
    const max = Math.max(...products.map(el => el.discont_price))
 
-   const [minValue, setMinValue] = useState(0)
-   const [maxValue, setMaxValue] = useState(Infinity)
-   const [onSale, setOnSale] = useState(false)
-  
    useEffect(() => {
     dispatch(searchProductsByPriceAction({minValue, maxValue}))
   }, [minValue, maxValue])
    
-
   useEffect(() => {
-    if (onSale) {
-      dispatch(onSaleProductsAction())
-    } else {
-      dispatch(loadProducts(category))
-    }
+      dispatch(onSaleProductsAction({onSale, sortType}))
+
   }, [onSale])
+
+  const changeMaxValue = (event) => {
+    if (!event.target.value.slice(-1).match(/[0-9]/)) {
+      event.target.value = event.target.value.slice(0, -1)
+    }
+    setMaxValue(+event.target.value)
+  }
+
+  const changeMinValue = (event) => {
+    if (!event.target.value.slice(-1).match(/[0-9]/)) {
+      event.target.value = event.target.value.slice(0, -1)
+    }
+    setMinValue(+event.target.value)
+
+  }
 
   return (
 	  <div className = {cn(styles.products_page, 'wrapper')}>
@@ -64,15 +81,18 @@ export default function ProductsPage() {
             name = 'min' 
             className = {styles.price_input} 
             placeholder = {`from ${min}$`} 
-            type = 'number'
-            onChange = {(e) => setMinValue(+e.target.value)}
+            type = 'text'
+            
+            onChange = {(e) => changeMinValue(e)}
+            
           />
           <input 
             name = 'max' 
             className = {styles.price_input} 
             placeholder = {`to ${max}$`} 
-            type = 'number' 
-            onChange = {(e) => setMaxValue(+e.target.value)}
+            type = 'text' 
+            
+            onChange = {(e) => changeMaxValue(e)}
           />
         </div>
 
@@ -84,15 +104,16 @@ export default function ProductsPage() {
             type = 'checkbox'
             checked = {onSale}
             onChange = {() => setOnSale(prev => !prev)}
+            tabIndex = '1'
           />
         </div>
 
         <div className = {styles.sort_block}>
           <p>Sort by</p>
-          <select className = {styles.sort_select} onInput = {sort_products}>
+          <select className = {styles.sort_select} onInput = {sort_products} tabIndex = '2'>
             <option value = "default">default</option>
             <option value = "title">title</option>
-            <option value = "price">price</option>
+            <option value = "discont_price">price</option>
           </select>
         </div>
       </div>

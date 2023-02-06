@@ -18,21 +18,24 @@ export default function CatalogPage() {
 
   const dispatch = useDispatch()
 
+  const [minValue, setMinValue] = useState(0)
+  const [maxValue, setMaxValue] = useState(Infinity)
+  const [onSale, setOnSale] = useState(false)
+  const [sortType, setSortType] = useState('default')
 
   useEffect(() => {
     dispatch(loadAllProducts)
   }, [])
 
   const products = useSelector(state => state.allProducts)
-  const sort_products = event => dispatch(sortAllProductsAction(event.target.value))
+  const sort_products = event => {
+    setSortType(event.target.value)
+    dispatch(sortAllProductsAction(event.target.value))
+  }
 
   const min = Math.min(...products.map(el => el.discont_price))
   const max = Math.max(...products.map(el => el.discont_price))
 
-  const [minValue, setMinValue] = useState(0)
-  const [maxValue, setMaxValue] = useState(Infinity)
-  const [onSale, setOnSale] = useState(false)
-  
   useEffect(() => {
     console.log('eff', minValue, maxValue)
     dispatch(searchAllProductsByPriceAction({minValue, maxValue}))
@@ -40,14 +43,8 @@ export default function CatalogPage() {
    
 
   useEffect(() => {
-    if (onSale) {
-      dispatch(onSaleAllProductsAction())
-     } else {
-       dispatch(loadAllProducts)
-     }
+      dispatch(onSaleAllProductsAction({onSale, sortType}))
   }, [onSale])
-
-
 
   return (
 	<div className = {cn(styles.products_page, 'wrapper')}>
@@ -88,7 +85,7 @@ export default function CatalogPage() {
         <select className = {styles.sort_select} onInput = {sort_products}>
           <option value = "default">default</option>
           <option value = "title">title</option>
-          <option value = "price">price</option>
+          <option value = "discont_price">price</option>
         </select>
       </div>
     </div>
