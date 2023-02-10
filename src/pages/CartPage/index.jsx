@@ -16,8 +16,8 @@ export default function CartPage() {
 
   const productsInCart = useSelector(state => state.cart)
 
-  const total_discont = productsInCart.reduce((total, {count, discont_price}) => total + count * discont_price, 0)
-  const total = productsInCart.reduce((total, {count, price}) => total + count * price, 0)
+  const total_discont = (productsInCart.reduce((total, {count, discont_price}) => total + count * discont_price, 0)).toFixed(2)
+  const total = (productsInCart.reduce((total, {count, price}) => total + count * price, 0)).toFixed(2)
   
   return (
 	<div className = {cn(styles.cart_page, 'wrapper')}>
@@ -63,7 +63,7 @@ export default function CartPage() {
 
               <div>
                 <p>You save</p>
-                <p>{total - total_discont}$</p>
+                <p>{(total - total_discont).toFixed(2)}$</p>
               </div>
             </div>
             <Form 

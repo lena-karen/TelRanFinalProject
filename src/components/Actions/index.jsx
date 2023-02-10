@@ -17,22 +17,48 @@ export default function Actions() {
 
   const allProducts = useSelector(state => state.allProducts)
 
-  const productsWithDiscont = allProducts.filter(el => el.discont_price > 0)
+  const productsWithDiscont = allProducts.filter(el => el.discont_price != el.price)
  
-  const getRandomElement = (array) => {
-    const index = Math.floor(Math.random() * array.length )
-    return array[index]
+  
+  const getRandomElement = (max) => {
+    const index = Math.floor(Math.random() * max )
+    return index
   }
 
+  let actionProducts = [];
+  if (productsWithDiscont.length >= 3) {
+    actionProducts = productsWithDiscont
+      .map(el => [el, Math.random()])
+      .sort((a, b) => a[1] - b[1])
+      .map(el => el[0])
+      .slice(0, 3)
+  } else {
+    actionProducts = productsWithDiscont
+  }
+//console.log(actionProducts)
   return (
     <section id = "actions" className = {cn(styles.actions, 'wrapper')}>
       <Title>Sale</Title>
       {
-        productsWithDiscont.length >0 ? 
+        productsWithDiscont.length > 0 ? 
         <div className = {styles.products_block}>
-          <ProductCard product = { getRandomElement(productsWithDiscont) } />
-          <ProductCard product = { getRandomElement(productsWithDiscont) } />
-          <ProductCard product = { getRandomElement(productsWithDiscont) } />
+            {
+              actionProducts.map(el => <ProductCard key = {el.id} product = {el} />)
+              // productsWithDiscont.length >= 3
+              // ?
+              // <>
+              //   <ProductCard product = { getRandomElement(productsWithDiscont.length) } />
+              //   <ProductCard product = { getRandomElement(productsWithDiscont.length) } />
+              //   <ProductCard product = { getRandomElement(productsWithDiscont.length) } /> 
+              // </>
+              // : <>
+              // {
+              //   productsWithDiscont.map(el => <ProductCard el = {el.id} product = {el}/>)
+              // }
+              // </>
+            }
+
+       
         </div>
         : ''
       }

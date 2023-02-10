@@ -29,7 +29,7 @@ export default function Header() {
       </Link>
 
       <div className = {styles.static_nav}>
-        <Nav />
+        <Nav setIsMenuOpened = {setIsMenuOpened}/>
       </div>
 
       <motion.div 
