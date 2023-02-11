@@ -36,7 +36,6 @@
 
 .product_block img {
 	width: 710px;
-	/* height: 710px; */
 	object-fit: contain;
 }
 
@@ -62,20 +61,20 @@
 	font-size: 35px;
 }
 
-.price_block p:first-child {
+.discont_price {
 	font-weight: 600;
 	font-size: 70px;
 	color: black;
 }
 
-.price_block p:nth-child(2) {
+.price {
 	font-weight: 500;
 	font-size: 28px;
 	text-decoration-line: line-through;
 	color: var(--gray);
 }
 
-.price_block p:last-child {
+.discount {
 	color: var(--pink);
 	font-weight: 600;
 	font-size: 28px;

@@ -35,7 +35,7 @@ export default function ProductsPage() {
    const products = useSelector(state => state.products)
    const categories = useSelector(state => state.categories)
 
-   const currentCategory = categories.find(el => el.id == category)
+   const currentCategory = categories.find(el => el.id === +category)
   
 
    const sort_products = event => {
@@ -82,16 +82,14 @@ export default function ProductsPage() {
             className = {styles.price_input} 
             placeholder = {`from ${min}$`} 
             type = 'text'
-            
             onChange = {(e) => changeMinValue(e)}
-            
           />
+
           <input 
             name = 'max' 
             className = {styles.price_input} 
             placeholder = {`to ${max}$`} 
             type = 'text' 
-            
             onChange = {(e) => changeMaxValue(e)}
           />
         </div>

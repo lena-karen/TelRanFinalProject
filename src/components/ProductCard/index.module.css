@@ -7,7 +7,6 @@
 	font-weight: 600;
 	font-size: 18px;
 	line-height: 130%;
-
 	letter-spacing: 0.03em;
 }
 
@@ -15,19 +14,24 @@
 	width: 318px;
 	height: 350px;
 	object-fit: cover;
-
+	border-radius: 15px;
 }
 
-.product_card p {
+.product_title {
 	margin-top: 20px;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 130%;
 	color: var(--light-black);
+	text-align: center;
 }
 
 .product_card:hover .product_title {
 	color: var(--green);
+}
+
+.product_info {
+	width: 100%;
 }
 
 .price_block {
@@ -51,19 +55,25 @@
 	font-size: 30px;
 }
 
-.price_block p:first-child {
+.discont_price {
 	font-weight: 600;
 	font-size: 30px;
+	color: black;
 }
 
-.price_block p:nth-child(2) {
+.no_discont {
+	width: 100%; 
+	text-align: center;
+}
+
+.price {
 	font-weight: 500;
 	font-size: 20px;
 	text-decoration-line: line-through;
 	color: var(--gray);
 }
 
-.price_block p:last-child {
+.discont {
 	color: var(--pink);
 	font-weight: 600;
 	font-size: 20px;

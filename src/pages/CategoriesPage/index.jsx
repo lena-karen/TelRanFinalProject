@@ -6,8 +6,6 @@ import Title from '../../components/Title'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { loadCategories } from '../../requests/categoriesRequest'
-import { useParams } from 'react-router-dom'
-
 
 export default function CategoriesPage() {
 
@@ -17,8 +15,6 @@ export default function CategoriesPage() {
 
   const categories = useSelector(state => state.categories)
 
-  //const {category} = useParams()
-  //const currentCategory = categories.find(el => el.id == category)
   return (
 	<div className = {cn(styles.categories_page, 'wrapper')}>
     <Title className = {styles.title}>Categories</Title>

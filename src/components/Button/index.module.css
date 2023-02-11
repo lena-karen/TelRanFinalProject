@@ -7,11 +7,13 @@
 	border: 2px solid white;
 	color: var(--black);
 }
+
 .green {
 	background: var(--green);
 	border: 2px solid var(--green);
 	color: white;
 }
+
 .transparent {
 	background: transparent;
 	border: 2px solid white;

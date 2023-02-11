@@ -1,15 +1,9 @@
 .discount {
-	/* background: url('./bg-img.svg'), linear-gradient(262.69deg, #339933 -0.43%, #006300 104.36%); */
 	background: linear-gradient(262.69deg, #339933 -0.43%, #006300 104.36%);
-	/* background-size: auto, auto;
-	background-repeat: no-repeat, repeat;
-	background-position: 90px, center; */
-
 	padding: 45px 0;
 }
 
 .coupon_wrapper {
-	/* width: 100%; */
 	background: url('./bg-img.svg');
 	background-repeat: no-repeat, repeat;
 	background-position: 90px, center;
@@ -21,7 +15,6 @@
 .discount_info {
 	display: flex;
 	flex-direction: column;
-
 	width: 50%;
 }
 
@@ -31,6 +24,7 @@
 	line-height: 120%;
 	letter-spacing: 0.03em;
 	color: #FFFFFF;
+	margin-left: 25px;
 }
 
 .discount_info p:nth-child(2) {

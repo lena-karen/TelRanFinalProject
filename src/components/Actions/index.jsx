@@ -17,13 +17,7 @@ export default function Actions() {
 
   const allProducts = useSelector(state => state.allProducts)
 
-  const productsWithDiscont = allProducts.filter(el => el.discont_price != el.price)
- 
-  
-  const getRandomElement = (max) => {
-    const index = Math.floor(Math.random() * max )
-    return index
-  }
+  const productsWithDiscont = allProducts.filter(el => el.discont_price !== el.price)
 
   let actionProducts = [];
   if (productsWithDiscont.length >= 3) {
@@ -35,35 +29,19 @@ export default function Actions() {
   } else {
     actionProducts = productsWithDiscont
   }
-//console.log(actionProducts)
+
   return (
     <section id = "actions" className = {cn(styles.actions, 'wrapper')}>
       <Title>Sale</Title>
       {
-        productsWithDiscont.length > 0 ? 
-        <div className = {styles.products_block}>
+        productsWithDiscont.length > 0 
+        ? <div className = {styles.products_block}>
             {
               actionProducts.map(el => <ProductCard key = {el.id} product = {el} />)
-              // productsWithDiscont.length >= 3
-              // ?
-              // <>
-              //   <ProductCard product = { getRandomElement(productsWithDiscont.length) } />
-              //   <ProductCard product = { getRandomElement(productsWithDiscont.length) } />
-              //   <ProductCard product = { getRandomElement(productsWithDiscont.length) } /> 
-              // </>
-              // : <>
-              // {
-              //   productsWithDiscont.map(el => <ProductCard el = {el.id} product = {el}/>)
-              // }
-              // </>
             }
-
-       
-        </div>
+          </div>
         : ''
       }
-
-
     </section>
   )
 }

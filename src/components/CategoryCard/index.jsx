@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './index.module.css'
-import cn from 'classnames'
 import { Link } from 'react-router-dom'
 
 export default function CategoryCard({id, title, image}) {

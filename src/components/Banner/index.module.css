@@ -4,15 +4,14 @@
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: right;
-
 }
+
 .banner_info {
 	display: flex;
 	padding-top: 130px;
 	flex-direction: column;
 	align-items: start;
 	min-height: 600px;
-
 }
 
 .btns {
@@ -32,8 +31,6 @@
 	width: 241px;
 	height: 82px;
 	border-radius: 13px;
-	/* margin-top: 60px; */
-
 	font-weight: 700;
 	font-size: 25px;
 	cursor: pointer;

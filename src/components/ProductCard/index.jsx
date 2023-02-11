@@ -3,9 +3,9 @@ import styles from './index.module.css'
 import cn from 'classnames'
 import Button from '../Button'
 
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { addToCartAction } from '../../store/actions/addToCartAction'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 export default function ProductCard({product}) {
 
   const dispatch = useDispatch();
@@ -14,10 +14,6 @@ export default function ProductCard({product}) {
   const category = categoryId
   const discount = Math.round(( price - discont_price ) * 100 / price)
 
-  // const click = event => {
-  //   event.stopPropagation()
-  // }
-  
   const addToCart = (product) => {
     dispatch(addToCartAction(product))
 
@@ -37,26 +33,26 @@ export default function ProductCard({product}) {
           Add to cart
         </Button>
       </div>
-
-      <Link to = {`/${category}/${id}`} tabIndex = '-1'>
-        <div className = {styles.price_block}>
-          {
-            discont_price != price
-            ? <p>{discont_price}<span>$</span></p>
-            : ''
-          }
-          
-          <p>{price}$</p>
-
-          {
-            discount != 0
-            ? <p>{discount}%</p>
-            : ''
-          }
-          
-        </div>
-        <p className = {styles.product_title}>{title}</p>
-      </Link>
+      <div className = {styles.product_info}>
+        <Link to = {`/${category}/${id}`} tabIndex = '-1'>
+        
+          <div className = {styles.price_block}>
+            {
+              discont_price !== price
+              ? <>
+                  <p className = {styles.discont_price}>{discont_price}<span>$</span></p>
+                  <p className = {styles.price}>{price}$</p>
+                  <p className = {styles.discont}>{discount}%</p>
+                </>
+             
+              : <p className = {cn(styles.discont_price, styles.no_discont)}>{discont_price}<span>$</span></p>
+            }
+            
+          </div>
+          <p className = {styles.product_title}>{title}</p>
+       
+        </Link>
+      </div>
     </div>
   )
 }

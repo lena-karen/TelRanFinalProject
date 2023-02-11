@@ -1,16 +1,10 @@
 import React from 'react'
 import styles from './index.module.css'
 import cn from 'classnames'
-import DiscountImg from './bg-img.svg'
 import Form from '../Form'
-
-import { useContext } from 'react'
 
 export default function Coupon() {
 
-  const submit = event => {
-    
-  }
   return (
     <section id = "coupon" className = {styles.discount} >
       <div className = {cn(styles.coupon_wrapper, 'wrapper')}>

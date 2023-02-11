@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react'
 import styles from './index.module.css'
 import cn from 'classnames'
-import Input from '../../components/Input';
 import Title from '../../components/Title';
-import ArrowIcon from '../CartPage/ArrowIcon';
 import Button from '../../components/Button';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +16,7 @@ export default function ProductPage() {
   const categories = useSelector(state => state.categories)
   const dispatch = useDispatch()
 
-  const currentCategory = categories.find(el => el.id == category)
+  const currentCategory = categories.find(el => el.id === +category)
 
   const navigate = useNavigate()
   useEffect(() => {
@@ -27,7 +25,6 @@ export default function ProductPage() {
 
   const product = useSelector(state => state.product)
    const {
-          id,
           title, 
           image, 
           price, 
@@ -53,9 +50,17 @@ export default function ProductPage() {
 
       <div className = {styles.product_info}>
         <div className = {styles.price_block}>
-          <p>{discont_price}<span>$</span></p>
-          <p>{price}$</p>
-          <p>{discount}%</p>
+          {
+            discont_price !== price 
+            ? <>
+                <p className = {styles.discont_price}>{discont_price}<span>$</span></p>
+                <p className = {styles.price}>{price}$</p>
+                <p className = {styles.discount}>{discount}%</p>
+              </>
+
+            : <p className = {styles.discont_price}>{discont_price}<span>$</span></p>
+          }
+         
         </div>
 
         <Button 

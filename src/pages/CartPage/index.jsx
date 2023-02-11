@@ -52,19 +52,21 @@ export default function CartPage() {
               </div>
 
               {
-                total_discont != 0
-                ?               
-                <div>
-                  <p>Total with discont</p>
-                  <p>{total_discont}$</p>
-                </div>
+                total_discont !== total
+                ?    
+                <>
+                  <div>
+                    <p>Total with discont</p>
+                    <p>{total_discont}$</p>
+                  </div>
+                  <div>
+                    <p>You save</p>
+                    <p>{(total - total_discont).toFixed(2)}$</p>
+                  </div>
+                </>           
                 : ''
               }
 
-              <div>
-                <p>You save</p>
-                <p>{(total - total_discont).toFixed(2)}$</p>
-              </div>
             </div>
             <Form 
               button_color = 'green'

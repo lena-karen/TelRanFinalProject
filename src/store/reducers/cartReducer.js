@@ -2,7 +2,6 @@ import {
 		ADD_TO_CART, 
 		INCREASE_IN_CART, 
 		DECREASE_IN_CART,
-		CLEAR_CART,
 		DELETE_FROM_CART,
 		CHANGE_COUNT_IN_CART 
 		} from '../actionsTypes';
@@ -10,7 +9,7 @@ import {
 const initialState = []
 
 const isInCart = (state = initialState, payload) => {
-	const targetProduct = state.find(el => el.id == payload.id)
+	const targetProduct = state.find(el => el.id === payload.id)
 	if (targetProduct) {
 		targetProduct.count++
 		return [...state]
@@ -24,22 +23,22 @@ const isInCart = (state = initialState, payload) => {
 }
 
 const increaseCount = (state = initialState, payload) => {
-	const targetProduct = state.find(el => el.id == payload)
+	const targetProduct = state.find(el => el.id === payload)
 	targetProduct.count++
 	return [...state]
 }
 
 const changeCount = (state = initialState, id, count) => {
-	const targetProduct = state.find(el => el.id == id)
+	const targetProduct = state.find(el => el.id === id)
 	targetProduct.count = count
 	return [...state]
 }
 
 const decreaseCount = (state = initialState, payload) => {
-	const targetProduct = state.find(el => el.id == payload)
+	const targetProduct = state.find(el => el.id === payload)
 	if (targetProduct.count > 1) {
 		targetProduct.count--
-	} else return state.filter(el => el.id != payload)
+	} else return state.filter(el => el.id !== payload)
 
 	return [...state]
 }
@@ -60,7 +59,8 @@ export const cartReducer = (state = initialState, action) => {
 			return changeCount(state, action.payload.id, action.payload.count)
 
 		case DELETE_FROM_CART:
-			return state.filter(el => el.id != action.payload)
+			return state.filter(el => el.id !== action.payload)
+		
 		default:
 			return state;
 	}

@@ -1,7 +1,6 @@
 .form {
 	display: flex;
 	flex-direction: column;
-
 	padding: 0 25px;
 	position: relative;
 }
@@ -21,7 +20,6 @@
 }
 
 .error {
-	/* height: 10px; */
 	position: absolute;
 	right: 5%;
 	top: 45%;
@@ -32,7 +30,6 @@
 	border-radius: 5px;
 	background-color: var(--pink);
 	padding: 0 5px;
-
 }
 
 .input_required::placeholder {
@@ -56,7 +53,6 @@
 }
 
 @media screen and (max-width: 420px) {
-
 	.button {
 		font-size: 26px;
 	}

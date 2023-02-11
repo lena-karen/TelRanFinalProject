@@ -37,7 +37,6 @@ export default function CatalogPage() {
   const max = Math.max(...products.map(el => el.discont_price))
 
   useEffect(() => {
-    //console.log('eff', minValue, maxValue)
     dispatch(searchAllProductsByPriceAction({minValue, maxValue}))
   }, [minValue, maxValue])
    

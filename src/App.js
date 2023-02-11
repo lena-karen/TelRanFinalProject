@@ -12,24 +12,19 @@ import { Routes, Route } from 'react-router-dom'
 
 function App() {
 
-  // const actionsRef = useRef(null)
-
   return (
-    // <Context.Provider value = {{actionsRef}}>
-      <div className="App">
-        <Routes>
-            <Route path = '/' element = {<Layout />}>
-              <Route index element = {<MainPage />} />
-              <Route path = 'products' element = {<CatalogPage />} />
-              <Route path = 'categories' element = {<CategoriesPage />} />
-              <Route path = ':category' element = {<ProductsPage />} />
-              <Route path = ':category/:currentProduct' element = {<ProductPage />} />
-              <Route path = 'cart' element = {<CartPage />} />
-          </Route>
-        </Routes>
-      </div>
-    // </Context.Provider>
-    
+    <div className="App">
+      <Routes>
+          <Route path = '/' element = {<Layout />}>
+            <Route index element = {<MainPage />} />
+            <Route path = 'products' element = {<CatalogPage />} />
+            <Route path = 'categories' element = {<CategoriesPage />} />
+            <Route path = ':category' element = {<ProductsPage />} />
+            <Route path = ':category/:currentProduct' element = {<ProductPage />} />
+            <Route path = 'cart' element = {<CartPage />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 

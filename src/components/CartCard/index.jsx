@@ -64,12 +64,16 @@ export default function CartCard({id, title, image, price, discont_price, count,
       </form>
 
       {
-        discont_price != price 
-        ?  <div className = {styles.product_price}>{discont_price}<span>$</span></div>
-        : ''
+        discont_price !== price 
+        ? <>
+            <div className = {styles.product_price}>{discont_price}<span>$</span></div>
+            <div className = {styles.product_old_price}>{price}<span>$</span></div>
+          </>
+
+        : <div className = {styles.product_price}>{discont_price}<span>$</span></div>
       }
 
-      <div className = {styles.product_old_price}>{price}<span>$</span></div>
+
       <div 
         className = {styles.delete} 
         onClick = {() => dispatch(deleteFromCartAction(id))}

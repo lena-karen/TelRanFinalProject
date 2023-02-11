@@ -6,11 +6,11 @@
 }
 
 body {
-  /* max-width: 1440px; */
   margin: 0 auto;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
 }
+
 a {
   text-decoration: none !important;
   color: inherit;

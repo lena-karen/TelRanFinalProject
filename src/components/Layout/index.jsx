@@ -9,9 +9,11 @@ import { Outlet } from 'react-router-dom'
 
 export default function Layout() {
   const [btnShown, setBtnShown] = useState(false)
+
   window.addEventListener('scroll', () => {
     window.scrollY > 400 ? setBtnShown(true) : setBtnShown(false)
   })
+  
   return (
 	  <div className = {styles.layout}>
       <Header />
