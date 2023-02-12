@@ -5,7 +5,7 @@
 .categories_block {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	row-gap: 58px;
+	gap: 58px 0.1rem;
 }
 
 .title {

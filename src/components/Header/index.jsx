@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import styles from './index.module.css'
 import cn from 'classnames'
 import LogoIcon from './LogoIcon'
@@ -9,10 +9,20 @@ import { Link } from 'react-router-dom'
 import { MenuOutlined } from '@ant-design/icons'
 import { motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
-export default function Header() {
 
-  const productsInCart = useSelector(state => state.cart)
+export default function Header() {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
+  const productsInCart = useSelector(state => state.cart)
+  const menuDivRef = useRef(null)
+  const menuIconRef = useRef(null)
+
+  document.addEventListener('click', (event) => {
+    if (!menuDivRef.current?.contains(event.target) && !menuIconRef.current?.contains(event.target) ) {
+      setIsMenuOpened(false)
+    } else {
+      setIsMenuOpened(true)
+    }
+  })
 
   const variants = {
     visible: { display: 'flex', opacity: 1 },
@@ -37,8 +47,10 @@ export default function Header() {
         animate = {isMenuOpened ? 'visible' : 'hidden'}
         variants = {variants}
         initial = 'hidden'
+        ref = {menuDivRef}
+
       >
-        <Nav setIsMenuOpened = {setIsMenuOpened} /> 
+        <Nav setIsMenuOpened = {setIsMenuOpened}  /> 
       </motion.div>
 
       <Link to = '/cart' className = {styles.link_to_cart}>
@@ -55,6 +67,7 @@ export default function Header() {
       <div 
         className = {styles.menu_icon} 
         onClick = {() => setIsMenuOpened(!isMenuOpened)}
+        ref = {menuDivRef}
       >
         <MenuOutlined />
       </div>
