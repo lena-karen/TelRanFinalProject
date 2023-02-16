@@ -25,7 +25,6 @@ export default function CatalogPage() {
 
   useEffect(() => {
     dispatch(loadAllProducts)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const products = useSelector(state => state.products)
@@ -39,13 +38,11 @@ export default function CatalogPage() {
 
   useEffect(() => {
     dispatch(searchProductsByPriceAction({minValue, maxValue}))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minValue, maxValue])
    
 
   useEffect(() => {
       dispatch(onSaleProductsAction({onSale, sortType}))
-      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onSale])
 
   return (
