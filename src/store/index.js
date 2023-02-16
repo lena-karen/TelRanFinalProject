@@ -5,7 +5,6 @@ import { categoriesReducer } from './reducers/categoriesReducer';
 import { productsReducer } from './reducers/productsReducer';
 import { productReducer } from './reducers/productReducer';
 import { cartReducer } from './reducers/cartReducer';
-import { allProductsReducer } from './reducers/allProductsReducer';
 
 import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
 	categories: categoriesReducer,
 	products: productsReducer,
 	product: productReducer,
-	allProducts: allProductsReducer,
 	cart: cartReducer
 })
 

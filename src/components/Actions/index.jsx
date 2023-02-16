@@ -15,7 +15,7 @@ export default function Actions() {
     dispatch(loadAllProducts)
   }, [])
 
-  const allProducts = useSelector(state => state.allProducts)
+  const allProducts = useSelector(state => state.products)
 
   const productsWithDiscont = allProducts.filter(el => el.discont_price !== el.price)
 

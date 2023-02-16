@@ -1,5 +1,6 @@
 import { 
 		LOAD_PRODUCTS, 
+		LOAD_ALL_PRODUCTS,
 		SORT_PRODUCTS, 
 		SEARCH_PRICE, 
 		ON_SALE_PRODUCTS 
@@ -21,7 +22,11 @@ export const productsReducer = (state = initialState, action) => {
 		case LOAD_PRODUCTS:
 			defaultState = action.payload
 			return action.payload
-			
+
+		case LOAD_ALL_PRODUCTS:
+			defaultState = action.payload
+			return action.payload
+
 		case SORT_PRODUCTS:
 			return sort(action.payload, state)
 
@@ -35,7 +40,7 @@ export const productsReducer = (state = initialState, action) => {
 				}
 				return el
 			})
-			
+
 		case ON_SALE_PRODUCTS:
 			if (action.payload.onSale) {
 				return state.filter(el => el.discont_price !== el.price)

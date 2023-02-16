@@ -9,9 +9,9 @@ import FormCheck from 'react-bootstrap/FormCheck';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { loadAllProducts } from '../../requests/allProductsRequest';
-import { sortAllProductsAction } from '../../store/actions/sortAllProductsAction';
-import { searchAllProductsByPriceAction } from '../../store/actions/searchAllProductsByPriceAction';
-import { onSaleAllProductsAction } from '../../store/actions/onSaleAllProductsAction';
+import { sortProductsAction } from '../../store/actions/sortProductsAction';
+import { searchProductsByPriceAction } from '../../store/actions/searchProductsByPriceAction';
+import { onSaleProductsAction } from '../../store/actions/onSaleProductsAction';
 
 
 export default function CatalogPage() {
@@ -25,24 +25,27 @@ export default function CatalogPage() {
 
   useEffect(() => {
     dispatch(loadAllProducts)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const products = useSelector(state => state.allProducts)
+  const products = useSelector(state => state.products)
   const sort_products = event => {
     setSortType(event.target.value)
-    dispatch(sortAllProductsAction(event.target.value))
+    dispatch(sortProductsAction(event.target.value))
   }
 
   const min = Math.min(...products.map(el => el.discont_price))
   const max = Math.max(...products.map(el => el.discont_price))
 
   useEffect(() => {
-    dispatch(searchAllProductsByPriceAction({minValue, maxValue}))
+    dispatch(searchProductsByPriceAction({minValue, maxValue}))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minValue, maxValue])
    
 
   useEffect(() => {
-      dispatch(onSaleAllProductsAction({onSale, sortType}))
+      dispatch(onSaleProductsAction({onSale, sortType}))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onSale])
 
   return (
