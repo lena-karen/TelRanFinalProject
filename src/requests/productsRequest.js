@@ -4,6 +4,7 @@ export const loadProducts = (category) => {
 		fetch(`http://127.0.0.1:3333/categories/${category}`)
 		.then(res => res.json())
 		.then(json => {
+			console.log('req', json)
 			const jsonWithHidden = json.map(el => ({...el, hidden: false}))
 			dispatch(getProductsAction(jsonWithHidden))
 		})

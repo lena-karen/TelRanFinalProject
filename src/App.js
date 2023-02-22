@@ -15,13 +15,13 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route path = '/' element = {<Layout />}>
-            <Route index element = {<MainPage />} />
-            <Route path = 'products' element = {<CatalogPage />} />
-            <Route path = 'categories' element = {<CategoriesPage />} />
-            <Route path = ':category' element = {<ProductsPage />} />
-            <Route path = ':category/:currentProduct' element = {<ProductPage />} />
-            <Route path = 'cart' element = {<CartPage />} />
+        <Route path = '/' element = {<Layout />}>
+          <Route index element = {<MainPage />} />
+          <Route path = 'products' element = {<CatalogPage />} />
+          <Route path = 'categories' element = {<CategoriesPage />} />
+          <Route path = ':category' element = {<ProductsPage />} />
+          <Route path = ':category/:currentProduct' element = {<ProductPage />} />
+          <Route path = 'cart' element = {<CartPage />} />
         </Route>
       </Routes>
     </div>

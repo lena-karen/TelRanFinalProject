@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { loadProduct } from '../../requests/productRequest';
+import { loadCategories } from '../../requests/categoriesRequest';
 import { addToCartAction } from '../../store/actions/addToCartAction';
 
 
@@ -21,6 +22,7 @@ export default function ProductPage() {
   const navigate = useNavigate()
   useEffect(() => {
     dispatch(loadProduct(currentProduct))
+    dispatch(loadCategories)
   }, [])
 
   const product = useSelector(state => state.product)
@@ -38,12 +40,15 @@ export default function ProductPage() {
 	<div className = {cn(styles.products_page, 'wrapper')}>
     <Title className = {styles.title}>{title}</Title>
 
-    <div className = {styles.paths}>
-      <Link to = '/'>Main</Link>&nbsp;&nbsp;/&nbsp;&nbsp;
-      <button onClick={() => navigate(`/${category}`)}>
-        {currentCategory.title}
-      </button>
-    </div>
+    {
+      currentCategory &&
+      <div className = {styles.paths}>
+        <Link to = '/'>Main</Link>&nbsp;&nbsp;/&nbsp;&nbsp;
+        <button onClick={() => navigate(`/${category}`)}>
+          {currentCategory.title}
+        </button>
+      </div>
+    }
 
     <div className = {styles.product_block}>
       <img src = {`http://127.0.0.1:3333${image}`} alt="" />

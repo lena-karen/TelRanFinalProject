@@ -11,32 +11,29 @@ import FormCheck from 'react-bootstrap/FormCheck';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadProducts } from '../../requests/productsRequest';
+import { loadCategories } from '../../requests/categoriesRequest';
 import { sortProductsAction } from '../../store/actions/sortProductsAction';
 import { searchProductsByPriceAction } from '../../store/actions/searchProductsByPriceAction';
 import { onSaleProductsAction } from '../../store/actions/onSaleProductsAction';
 
 export default function ProductsPage() {
-
+  const {category} = useParams();
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(Infinity)
   const [onSale, setOnSale] = useState(false)
   const [sortType, setSortType] = useState('default')
 
-  const {category} = useParams();
-
   const dispatch = useDispatch()
-
- 
+  
+ console.log(category)
   useEffect(() => {
     dispatch(loadProducts(category))
-  
+    dispatch(loadCategories)
   }, [])
 
    const products = useSelector(state => state.products)
    const categories = useSelector(state => state.categories)
-
-   const currentCategory = categories.find(el => el.id === +category)
-  
+   const currentCategory = categories.find(el => el.id == category)
 
    const sort_products = event => {
     setSortType(event.target.value)
@@ -72,7 +69,7 @@ export default function ProductsPage() {
 
   return (
 	  <div className = {cn(styles.products_page, 'wrapper')}>
-      <Title className = {styles.title}>{currentCategory.title}</Title>
+      {currentCategory && <Title className = {styles.title}>{currentCategory.title}</Title>}
 
       <div className = {styles.filter_block}>
         <div className = {styles.price_filter}>
@@ -123,5 +120,5 @@ export default function ProductsPage() {
       </div>
 
   </div>
-  )
+ )
 }
