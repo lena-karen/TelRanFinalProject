@@ -128,4 +128,8 @@ a:hover svg{
 	.order_details, .form {
 		width: 100%;
 	}
+
+	.message {
+		margin: 10%;
+	}
 }

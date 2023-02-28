@@ -11,7 +11,7 @@ import { motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
 
 export default function Header() {
-  const [isMenuOpened, setIsMenuOpened] = useState(false)
+  let [isMenuOpened, setIsMenuOpened] = useState(false)
   const productsInCart = useSelector(state => state.cart)
   const menuDivRef = useRef(null)
   const menuIconRef = useRef(null)
@@ -20,7 +20,7 @@ export default function Header() {
     if (!menuDivRef.current?.contains(event.target) && !menuIconRef.current?.contains(event.target) ) {
       setIsMenuOpened(false)
     } else {
-      setIsMenuOpened(true)
+      setIsMenuOpened(!isMenuOpened)
     }
   })
 
@@ -66,7 +66,6 @@ export default function Header() {
 
       <div 
         className = {styles.menu_icon} 
-        onClick = {() => setIsMenuOpened(!isMenuOpened)}
         ref = {menuDivRef}
       >
         <MenuOutlined />
