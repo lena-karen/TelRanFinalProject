@@ -9,7 +9,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { loadProduct } from '../../requests/productRequest';
 import { loadCategories } from '../../requests/categoriesRequest';
 import { addToCartAction } from '../../store/actions/addToCartAction';
-
+import { url_localhost, url_render } from '../../variables'
 
 export default function ProductPage() {
 
@@ -51,7 +51,7 @@ export default function ProductPage() {
     }
 
     <div className = {styles.product_block}>
-      <img src = {`http://127.0.0.1:3333${image}`} alt="" />
+      <img src = {`${url_render}${image}`} alt="" />
 
       <div className = {styles.product_info}>
         <div className = {styles.price_block}>

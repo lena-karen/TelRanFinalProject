@@ -9,6 +9,7 @@ import { decreaseProductAction } from '../../store/actions/decreaseProductAction
 import { increaseProductAction } from '../../store/actions/increaseProductAction'
 import { changeCountAction } from '../../store/actions/changeCountAction'
 import { useNavigate } from 'react-router-dom'
+import { url_localhost, url_render } from '../../variables'
 
 export default function CartCard({id, title, image, price, discont_price, count, categoryId}) {
 
@@ -28,7 +29,7 @@ export default function CartCard({id, title, image, price, discont_price, count,
         className = {styles.product_img} 
         onClick={() => navigate(`/${categoryId}/${id}`)}
       >
-        <img src = {`http://127.0.0.1:3333${image}`} alt = {title} />
+        <img src = {`${url_render}${image}`} alt = {title} />
       </div>
 
       <div 
