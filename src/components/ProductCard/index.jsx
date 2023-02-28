@@ -6,6 +6,8 @@ import Button from '../Button'
 import { Link } from 'react-router-dom'
 import { addToCartAction } from '../../store/actions/addToCartAction'
 import { useDispatch } from 'react-redux'
+import { url_localhost, url_render } from '../../variables'
+
 export default function ProductCard({product}) {
 
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ export default function ProductCard({product}) {
     <div className = {styles.product_card}>
       <div className = {styles.product_img}>
         <Link to = {`/${category}/${id}`}>
-          <img src = {`http://127.0.0.1:3333${image}`} alt = {title} />
+          <img src = {`${url_render}${image}`} alt = {title} />
         </Link> 
 
         <Button 

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
 import { Link } from 'react-router-dom'
+import { url_localhost, url_render } from '../../variables'
 
 export default function CategoryCard({id, title, image}) {
 
@@ -8,7 +9,7 @@ export default function CategoryCard({id, title, image}) {
 	  // <Link to = {`/${id}`} className = {styles.category_card_link}>
 	  <Link to = {`/${id}`} className = {styles.category_card_link}>
       <div className = {styles.category_card}>
-        <img src = {`http://127.0.0.1:3333${image}`} alt = {title} />
+        <img src = {`${url_render}${image}`} alt = {title} />
         <p>{title}</p>
       </div>
 

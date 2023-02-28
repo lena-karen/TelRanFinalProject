@@ -1,7 +1,8 @@
 import { getProductsAction } from '../store/actions/getProductsAction'
+import { url_localhost, url_render } from '../variables'
 export const loadProducts = (category) => {
-	const url_render = 'https://gardenshop.onrender.com'
-	const url_localhost = 'http://127.0.0.1:3333'
+	// const url_render = 'https://gardenshop.onrender.com'
+	// const url_localhost = 'http://127.0.0.1:3333'
 	return dispatch => {
 		fetch(`${url_render}/categories/${category}`)
 		.then(res => res.json())
