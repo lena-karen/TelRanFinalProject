@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
 import cn from 'classnames';
-
+import Helmet from 'react-helmet'
 import Title from '../../components/Title';
 import ProductCard from '../../components/ProductCard';
 
@@ -47,6 +47,9 @@ export default function CatalogPage() {
 
   return (
 	<div className = {cn(styles.products_page, 'wrapper')}>
+    <Helmet>
+      <title>Catalog</title>
+    </Helmet>
     <Title className = {styles.title}>Catalog</Title>
 
     <div className = {styles.filter_block}>

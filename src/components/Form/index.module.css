@@ -56,4 +56,17 @@
 	.button {
 		font-size: 26px;
 	}
+
+	.input {
+		font-size: 15px;
+		padding-left: 15px;
+	}
+
+	.error {
+		/* top: 45%; */
+	}
+
+	.button {
+		padding: 20px;
+	}
 }

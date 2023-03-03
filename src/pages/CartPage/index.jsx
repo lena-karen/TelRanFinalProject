@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
 import cn from 'classnames'
-
+import Helmet from 'react-helmet'
 import ArrowIcon from './ArrowIcon'
 import Title from '../../components/Title'
 import Form from '../../components/Form'
@@ -10,17 +10,18 @@ import CartCard from '../../components/CartCard'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-
-
 export default function CartPage() {
 
   const productsInCart = useSelector(state => state.cart)
 
   const total_discont = (productsInCart.reduce((total, {count, discont_price}) => total + count * discont_price, 0)).toFixed(2)
   const total = (productsInCart.reduce((total, {count, price}) => total + count * price, 0)).toFixed(2)
-  
+
   return (
 	<div className = {cn(styles.cart_page, 'wrapper')}>
+    <Helmet>
+      <title>Your cart</title>
+    </Helmet>
     <Title className = {styles.title}>Shopping cart</Title>
 
     <div className = {styles.paths}>

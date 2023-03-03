@@ -1,3 +1,6 @@
+.cart_page {
+	margin-bottom: 50px;
+}
 
 a:hover svg{
 	fill: var(--green);
@@ -85,7 +88,8 @@ a:hover svg{
 }
 .cart_input {
 	border: 1px solid black;
-	padding: 25px;
+	width: 100%;
+	/* padding: 25px; */
 }
 
 .message {
@@ -125,12 +129,81 @@ a:hover svg{
 }
 
 @media screen and (max-width: 510px) {
-	.order_details, .form {
+	.form {
 		width: 100%;
+		padding: 10px;
+	}
+
+	.order_details {
+		width: 450px;
+		padding: 10px;
 	}
 
 	.message {
 		margin: 10%;
 		text-align: center;
+	}
+
+	.cart_input {
+		/* width: 380px; */
+		padding-left: 15px;
+	}
+}
+
+@media screen and (max-width: 470px) {
+	.order_details {
+		width: 420px;;
+	}	
+}
+
+@media screen and (max-width: 440px) {
+	.order_details, .form {
+		padding: 10px 7px;
+	}
+
+	.order_details {
+		width: 400px;
+	}
+
+	.total_block p:first-child {
+		font-size: 22px;
+	}
+	
+	.total_block p:last-child {
+		font-size: 27px;
+	}
+
+	.cart_input {
+		/* width: 380px; */
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.order_details, .form {
+		width: 300px;
+		padding: 10px 15px;
+	}
+
+	.order_details_title {
+		font-size: 20px;
+		margin-bottom: 35px;
+	}
+	
+	.total_block p:first-child {
+		font-size: 20px;
+	}
+	
+	.total_block p:last-child {
+		font-size: 25px;
+	}
+
+	.form {
+		margin-top: 20px;
+	}
+
+	.cart_input {
+		padding-left: 10px;
+		font-size: 13px;
+		/* width: 370px; */
 	}
 }

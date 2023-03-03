@@ -52,6 +52,11 @@
 	.discount_info {
 		width: 100%;
 		align-items: center;
+		margin-left: 0;
+	}
+
+	.discount_info p:nth-child(2) {
+		text-align: center;
 	}
 }
 

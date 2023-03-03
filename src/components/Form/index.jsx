@@ -19,20 +19,20 @@ export default function Form({button_color, button_children, input_classname, fo
     }
     reset()
   }
-
+  
   return (
 	  <form onSubmit = {handleSubmit(submit)} className = {cn(styles.form, form_className)}>
    
       <InputMask
-        mask = "+99 999 999 999 99"
-          placeholder = {placeholderPhone}
+        mask = "+99 999 999 999 99" 
+        placeholder = {placeholderPhone}
           {...register('phone', {
             required: {
               value: true,
               message: '* Phone number is required',
             },
             pattern: {
-              value: /^[\+][0-9]{2}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{2}/i,
+              value: /^[\+][0-9]{2}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]/i,
               message: '* Invalid phone format'
             }
 

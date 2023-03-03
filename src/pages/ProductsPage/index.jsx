@@ -5,7 +5,7 @@ import cn from 'classnames';
 
 import Title from '../../components/Title';
 import ProductCard from '../../components/ProductCard';
-
+import Helmet from 'react-helmet'
 import FormCheck from 'react-bootstrap/FormCheck';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -69,6 +69,9 @@ export default function ProductsPage() {
 
   return (
 	  <div className = {cn(styles.products_page, 'wrapper')}>
+      <Helmet>
+        <title>{currentCategory.title}</title>
+      </Helmet>
       {currentCategory && <Title className = {styles.title}>{currentCategory.title}</Title>}
 
       <div className = {styles.filter_block}>
